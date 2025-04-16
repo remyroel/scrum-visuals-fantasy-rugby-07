@@ -19,14 +19,14 @@ type FixtureDay = {
   fixtures: Fixture[];
 };
 
-// Fixture data from the image
+// Fixture data with updated April 28th entry
 const fixturesData: FixtureDay[] = [
   {
     date: "April 28th",
     day: "Monday",
     fixtures: [
       { time: "9:00", teamA: "Eaglesvale 2XV", teamB: "Watershed 2XV" },
-      { time: "10:30", teamA: "Goldridge 1XV", teamB: "Peterhouse 1XV" },
+      { time: "10:20", teamA: "Goldridge 1XV", teamB: "Gateway 1XV" }, // Updated time and teams
       { time: "11:40", teamA: "Watershed 1XV", teamB: "Midlands CC 1XV" },
       { time: "13:00", teamA: "Milton 1XV", teamB: "Wise Owl 1XV" },
       { time: "14:30", teamA: "Hillcrest 1XV", teamB: "Eaglesvale 1XV" },
