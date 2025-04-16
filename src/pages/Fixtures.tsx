@@ -19,78 +19,78 @@ type FixtureDay = {
   fixtures: Fixture[];
 };
 
-// Fixture data with updated April 28th entry
+// Fixture data with all requested updates
 const fixturesData: FixtureDay[] = [
   {
     date: "April 28th",
     day: "Monday",
     fixtures: [
-      { time: "9:00", teamA: "Eaglesvale 2XV", teamB: "Watershed 2XV" },
-      { time: "10:20", teamA: "Goldridge 1XV", teamB: "Gateway 1XV" }, // Updated time and teams
-      { time: "11:40", teamA: "Watershed 1XV", teamB: "Midlands CC 1XV" },
-      { time: "13:00", teamA: "Milton 1XV", teamB: "Wise Owl 1XV" },
-      { time: "14:30", teamA: "Hillcrest 1XV", teamB: "Eaglesvale 1XV" },
-      { time: "15:40", teamA: "Rydings 1XV", teamB: "Heritage 1XV" }
+      { time: "9:00", teamA: "EAGLESVALE 2XV", teamB: "WATERSHED 2XV" },
+      { time: "10:20", teamA: "GOLDRIDGE 1XV", teamB: "GATEWAY 1XV" },
+      { time: "11:40", teamA: "WATERSHED 1XV", teamB: "MIDLANDS CC 1XV" },
+      { time: "13:00", teamA: "MILTON 1XV", teamB: "WISE OWL 1XV" },
+      { time: "14:20", teamA: "HILLCREST 1XV", teamB: "EAGLESVALE 1XV" }, // Updated time from 14:30 to 14:20
+      { time: "15:40", teamA: "RYDINGS 1XV", teamB: "HERITAGE 1XV" }
     ]
   },
   {
     date: "April 29th",
     day: "Tuesday",
     fixtures: [
-      { time: "9:00", teamA: "Churchill 2XV", teamB: "Lomagundi 2XV" },
-      { time: "10:30", teamA: "Falcon 2XV", teamB: "St Albans 2XV" },
-      { time: "11:40", teamA: "Peterhouse 2XV", teamB: "St George's 2XV" },
-      { time: "13:00", teamA: "St John's 2XV", teamB: "Prince Edward's 2XV" },
-      { time: "14:30", teamA: "Lomagundi 1XV", teamB: "St Albans 1XV" },
-      { time: "15:40", teamA: "St George's 1XV", teamB: "St Andrew's 1XV" }
+      { time: "9:00", teamA: "CHURCHILL 2XV", teamB: "LOMAGUNDI 2XV" },
+      { time: "10:20", teamA: "FALCON 2XV", teamB: "ST ALBANS 2XV" }, // Updated time from 10:30 to 10:20
+      { time: "11:40", teamA: "PETERHOUSE 2XV", teamB: "ST GEORGE'S 2XV" },
+      { time: "13:00", teamA: "ST JOHN'S 2XV", teamB: "PRINCE EDWARD'S 2XV" },
+      { time: "14:20", teamA: "LOMAGUNDI 1XV", teamB: "ST ALBANS 1XV" }, // Updated time from 14:30 to 14:20
+      { time: "15:40", teamA: "ST GEORGE'S 1XV", teamB: "ST ANDREW'S 1XV" }
     ]
   },
   {
     date: "April 30th",
     day: "Wednesday",
     fixtures: [
-      { time: "10:30", teamA: "Watershed 2XV", teamB: "CBC 2XV" },
-      { time: "11:40", teamA: "Heritage 2XV", teamB: "Midlands CC 2XV" },
-      { time: "13:00", teamA: "Goldridge 1XV", teamB: "Hillcrest 1XV" },
-      { time: "14:30", teamA: "Eaglesvale 1XV", teamB: "Heritage 1XV" },
-      { time: "15:40", teamA: "Watershed 1XV", teamB: "Gateway 1XV" }
+      { time: "10:20", teamA: "WATERSHED 2XV", teamB: "CBC 2XV" }, // Updated time from 10:30 to 10:20
+      { time: "11:40", teamA: "RYDINGS 1XV", teamB: "MIDLANDS CC 1XV" }, // Updated teams
+      { time: "13:00", teamA: "GOLDRIDGE 1XV", teamB: "HILLCREST 1XV" },
+      { time: "14:20", teamA: "EAGLESVALE 1XV", teamB: "HERITAGE 1XV" }, // Updated time from 14:30 to 14:20
+      { time: "15:40", teamA: "WATERSHED 1XV", teamB: "GATEWAY 1XV" }
     ]
   },
   {
     date: "May 1st",
     day: "Thursday",
     fixtures: [
-      { time: "9:00", teamA: "St George's 2XV", teamB: "St Albans 2XV" },
-      { time: "10:30", teamA: "St George's 1XV", teamB: "Prince Edward's 1XV" },
-      { time: "11:40", teamA: "CBC 1XV", teamB: "Falcon 1XV" },
-      { time: "12:50", teamA: "Lomagundi 1XV", teamB: "Churchill 1XV" },
-      { time: "13:50", teamA: "Peterhouse 1XV", teamB: "St Andrew's 1XV" },
-      { time: "14:40", teamA: "St John's 1XV", teamB: "St Albans 1XV" },
-      { time: "15:50", teamA: "ZIM Steelers", teamB: "Sharks U20" }
+      { time: "8:00", teamA: "ST GEORGE'S 2XV", teamB: "ST ALBANS 2XV" }, // Updated teams and time
+      { time: "9:20", teamA: "ST GEORGE'S 1XV", teamB: "PRINCE EDWARD 1XV" }, // Updated teams and time
+      { time: "10:40", teamA: "CBC 1XV", teamB: "FALCON 1XV" }, // Updated teams and time
+      { time: "12:00", teamA: "LOMAGUNDI 1XV", teamB: "CHURCHILL 1XV" }, // Updated teams and time
+      { time: "13:20", teamA: "PETERHOUSE 1XV", teamB: "ST ANDREW'S 1XV" }, // Updated teams and time
+      { time: "14:40", teamA: "ST JOHN'S 1XV", teamB: "ST ALBANS 1XV" }, // Updated teams and time
+      { time: "16:00", teamA: "ZIM STEELERS", teamB: "SHARKS U20" } // Updated teams and time
     ]
   },
   {
     date: "May 2nd",
     day: "Friday",
     fixtures: [
-      { time: "9:00", teamA: "Milton 2XV", teamB: "Wise Owl 2XV" },
-      { time: "10:30", teamA: "Eaglesvale 2XV", teamB: "CBC 2XV" },
-      { time: "11:40", teamA: "Milton 1XV", teamB: "Lomagundi 2XV" },
-      { time: "13:00", teamA: "Prince Edward 2XV", teamB: "Churchill 2XV" },
-      { time: "14:30", teamA: "Rydings 1XV", teamB: "Wise Owl 1XV" },
-      { time: "15:40", teamA: "Peterhouse 2XV", teamB: "Lomagundi 2XV" }
+      { time: "9:00", teamA: "MILTON 2XV", teamB: "WISE OWL 2XV" },
+      { time: "10:20", teamA: "EAGLESVALE 2XV", teamB: "CBC 2XV" }, // Updated time from 10:30 to 10:20
+      { time: "11:40", teamA: "MILTON 1XV", teamB: "LOMAGUNDI 2XV" },
+      { time: "13:00", teamA: "PRINCE EDWARD 2XV", teamB: "CHURCHILL 2XV" },
+      { time: "14:20", teamA: "RYDINGS 1XV", teamB: "WISE OWL 1XV" }, // Updated time from 14:30 to 14:20
+      { time: "15:40", teamA: "PETERHOUSE 2XV", teamB: "LOMAGUNDI 2XV" }
     ]
   },
   {
     date: "May 3rd",
     day: "Saturday",
     fixtures: [
-      { time: "9:00", teamA: "St John's 2XV", teamB: "Churchill 2XV" },
-      { time: "10:30", teamA: "CBC 1XV", teamB: "Peterhouse 1XV" },
-      { time: "11:40", teamA: "Prince Edward 1XV", teamB: "Churchill 1XV" },
-      { time: "13:00", teamA: "Falcon 1XV", teamB: "St George's 1XV" },
-      { time: "14:30", teamA: "Peterhouse 1XV", teamB: "St Albans 1XV" },
-      { time: "15:40", teamA: "St John's 1XV", teamB: "St Andrew's 1XV" }
+      { time: "9:00", teamA: "PETERHOUSE 2XV", teamB: "FALCON 2XV" }, // Updated teams
+      { time: "10:20", teamA: "CBC 1XV", teamB: "PETERHOUSE 1XV" }, // Updated time from 10:30 to 10:20
+      { time: "11:40", teamA: "PRINCE EDWARD 1XV", teamB: "CHURCHILL 1XV" },
+      { time: "13:00", teamA: "LOMAGUNDI 1XV", teamB: "ST GEORGE'S 1XV" }, // Updated teams
+      { time: "14:20", teamA: "PETERHOUSE 1XV", teamB: "ST ALBANS 1XV" }, // Updated time from 14:30 to 14:20 and teams
+      { time: "15:40", teamA: "ST JOHN'S 1XV", teamB: "ST ANDREW'S 1XV" }
     ]
   }
 ];
