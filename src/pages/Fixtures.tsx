@@ -78,18 +78,18 @@ const fixturesData: FixtureDay[] = [
       { time: "11:40", teamA: "MILTON 1XV", teamB: "LOMAGUNDI 2XV" },
       { time: "13:00", teamA: "PRINCE EDWARD 2XV", teamB: "CHURCHILL 2XV" },
       { time: "14:20", teamA: "RYDINGS 1XV", teamB: "WISE OWL 1XV" }, // Updated time from 14:30 to 14:20
-      { time: "15:40", teamA: "PETERHOUSE 2XV", teamB: "LOMAGUNDI 2XV" }
+      { time: "15:40", teamA: "PETERHOUSE 2XV", teamB: "FALCON 2XV" }
     ]
   },
   {
     date: "May 3rd",
     day: "Saturday",
     fixtures: [
-      { time: "9:00", teamA: "PETERHOUSE 2XV", teamB: "FALCON 2XV" }, // Updated teams
+      { time: "9:00", teamA: "ST JOHNS 2XV", teamB: "ST ALBANS 2XV" }, // Updated teams
       { time: "10:20", teamA: "CBC 1XV", teamB: "PETERHOUSE 1XV" }, // Updated time from 10:30 to 10:20
       { time: "11:40", teamA: "PRINCE EDWARD 1XV", teamB: "CHURCHILL 1XV" },
       { time: "13:00", teamA: "LOMAGUNDI 1XV", teamB: "ST GEORGE'S 1XV" }, // Updated teams
-      { time: "14:20", teamA: "PETERHOUSE 1XV", teamB: "ST ALBANS 1XV" }, // Updated time from 14:30 to 14:20 and teams
+      { time: "14:20", teamA: "FALCON 1XV", teamB: "ST ALBANS 1XV" }, // Updated time from 14:30 to 14:20 and teams
       { time: "15:40", teamA: "ST JOHN'S 1XV", teamB: "ST ANDREW'S 1XV" }
     ]
   }
