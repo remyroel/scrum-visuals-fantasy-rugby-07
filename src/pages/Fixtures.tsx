@@ -119,13 +119,13 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue relative">
+    <div className="min-h-screen bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue">
       <div 
-        className="fixed inset-0 pointer-events-none z-0 opacity-[0.08] overflow-hidden"
+        className="absolute top-0 left-0 w-full h-[250px] pointer-events-none opacity-[0.12] overflow-hidden"
         style={{
           backgroundImage: "url('/assets/logo.png')",
           backgroundSize: "80% auto",
-          backgroundPosition: "center 25%",
+          backgroundPosition: "center top",
           backgroundRepeat: "no-repeat",
         }}
       />
