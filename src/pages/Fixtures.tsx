@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
@@ -119,12 +120,12 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#F2FCE2] text-scrummy-navyBlue relative">
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#D0E3FF] text-scrummy-navyBlue relative">
       <div className="fixed top-0 left-0 w-full h-[50vh] pointer-events-none z-0 overflow-hidden">
         <div 
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] max-w-full opacity-10"
           style={{
-            backgroundImage: "url('/assets/scrummy-watermark.png')",
+            backgroundImage: "url('/assets/logo.png')",
             backgroundSize: "contain",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
