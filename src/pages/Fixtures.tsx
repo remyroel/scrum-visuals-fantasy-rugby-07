@@ -119,16 +119,17 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue relative">
-      <div 
-        className="fixed inset-0 pointer-events-none z-0 opacity-[0.08] overflow-hidden"
-        style={{
-          backgroundImage: "url('/assets/logo.png')",
-          backgroundSize: "80% auto",
-          backgroundPosition: "center 5%",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
+  <div 
+    className="fixed top-0 left-0 w-full h-[250px] z-0 pointer-events-none overflow-hidden"
+    style={{
+      backgroundImage: "url('/assets/logo.png')",
+      backgroundSize: "80% auto",
+      backgroundPosition: "center top",
+      backgroundRepeat: "no-repeat",
+      maskImage: "linear-gradient(to bottom, black 60%, transparent)", // smooth fade
+      WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent)",
+    }}
+  />
 
       <div className="relative z-10 py-16 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
