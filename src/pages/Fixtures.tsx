@@ -119,23 +119,23 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#D3E4FD] to-[#1EAEDB] text-scrummy-navyBlue relative">
+    <div className="min-h-screen bg-gradient-to-b from-[#29A1F6] to-[#1196F5] text-scrummy-navyBlue relative">
       <div 
-        className="fixed inset-0 pointer-events-none z-0 opacity-[0.03] overflow-hidden"
+        className="fixed inset-0 pointer-events-none z-0 opacity-[0.08] overflow-hidden"
         style={{
           backgroundImage: "url('/assets/logo.png')",
           backgroundSize: "80% auto",
-          backgroundPosition: "center 20%",
+          backgroundPosition: "center 25%",
           backgroundRepeat: "no-repeat",
         }}
       />
 
-      <div className="relative z-10 py-8 px-4 md:px-8">
+      <div className="relative z-10 py-16 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center mb-4">
+          <div className="flex items-center mb-8">
             <Link 
               to="/" 
-              className="text-scrummy-navyBlue hover:text-scrummy-goldYellow transition-colors flex items-center gap-1 mb-6"
+              className="text-white hover:text-scrummy-goldYellow transition-colors flex items-center gap-1"
             >
               <ChevronLeft size={20} />
               <span>Back to Home</span>
@@ -143,12 +143,12 @@ const Fixtures: React.FC = () => {
           </div>
 
           <motion.h1 
-            className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron"
+            className="text-3xl md:text-5xl font-bold text-center mb-16 font-orbitron"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-scrummy-navyBlue">Derby Day 2025 </span>
+            <span className="text-white">Derby Day 2025 </span>
             <span className="block text-scrummy-goldYellow">Rugby Fixtures</span>
           </motion.h1>
 
