@@ -119,7 +119,7 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#29A1F6] to-[#1196F5] text-scrummy-navyBlue relative">
+    <div className="min-h-screen bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue relative">
       <div 
         className="fixed inset-0 pointer-events-none z-0 opacity-[0.08] overflow-hidden"
         style={{
