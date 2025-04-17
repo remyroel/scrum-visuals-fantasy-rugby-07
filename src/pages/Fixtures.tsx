@@ -118,7 +118,9 @@ const itemVariants = {
 const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
-  return (
+return (
+<>
+{/* Fixed logo background at top */}
   <div 
     className="fixed top-0 left-0 w-full h-[250px] z-0 pointer-events-none overflow-hidden"
     style={{
@@ -126,13 +128,14 @@ const Fixtures: React.FC = () => {
       backgroundSize: "80% auto",
       backgroundPosition: "center top",
       backgroundRepeat: "no-repeat",
-      maskImage: "linear-gradient(to bottom, black 60%, transparent)", // smooth fade
+      maskImage: "linear-gradient(to bottom, black 60%, transparent)",
       WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent)",
     }}
   />
 
-      <div className="relative z-10 py-16 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
+    {/* Main content */}
+    <div className="relative z-10 pt-[280px] pb-16 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto">
           <div className="flex items-center mb-8">
             <Link 
               to="/" 
@@ -204,6 +207,7 @@ const Fixtures: React.FC = () => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 
