@@ -143,7 +143,7 @@ const Fixtures: React.FC = () => {
           </div>
 
           <motion.h1 
-            className="text-3xl md:text-5xl font-bold text-center mb-16 font-orbitron"
+            className="text-3xl md:text-5xl font-bold text-center mb-24 font-orbitron"
             initial {{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
