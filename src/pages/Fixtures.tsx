@@ -121,7 +121,7 @@ const Fixtures: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue">
       <div 
-        className="absolute top-[-50px] left-0 w-full h-[250px] pointer-events-none opacity-[0.12] overflow-hidden"
+        className="absolute top-[-100px] left-0 w-full h-[300px] pointer-events-none opacity-[0.12] overflow-hidden"
         style={{
           backgroundImage: "url('/assets/logo.png')",
           backgroundSize: "80% auto",
