@@ -138,8 +138,8 @@ const Fixtures: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-scrummy-navyBlue">Rugby Fixtures</span>
-          <span className="block text-scrummy-goldYellow">Derby Day 2025</span>
+          <span className="text-scrummy-navyBlue">Derby Day 2025 </span>
+          <span className="block text-scrummy-goldYellow">Rugby Fixtures</span>
         </motion.h1>
 
         <div className="space-y-12">
