@@ -86,31 +86,23 @@ const Index: React.FC = () => {
 
           <motion.p
             variants={itemVariants}
-            className="text-scrummy-blue text-lg md:text-xl lg:text-2xl text-center max-w-3xl mb-8 md:mb-12 leading-relaxed font-light"
+            className="text-scrummy-blue text-lg md:text-xl lg:text-2xl text-center max-w-3xl mb-8 md:mb-16 leading-relaxed font-light"
           >
             Be the First to Join the Scrum!
           </motion.p>
-
-          {/* Moved Button Here */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <motion.a
-              href="/fixtures"
-              className="inline-block bg-[#003366] hover:bg-[#004488] text-[#FFC700] font-bold py-3 px-8 rounded-xl shadow-lg transition-all duration-300"
-              whileHover={{ 
-                y: -5, 
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1)"
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              See League Fixtures
-            </motion.a>
-          </motion.div>
 
           <motion.div
             variants={itemVariants}
             className="mb-8 md:mb-16 w-full flex justify-center"
           >
             <CountdownTimer targetDate={LAUNCH_DATE} />
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="mb-8 w-full max-w-lg mx-auto"
+          >
+            <WaitlistForm />
           </motion.div>
 
           {/* Social Media Icons */}
@@ -184,7 +176,19 @@ const Index: React.FC = () => {
             <em>Spots are limited—reserve your early access now!</em>
           </motion.p>
           
-
+          <motion.div variants={itemVariants}>
+            <motion.a
+              href="/fixtures"
+              className="inline-block bg-[#003366] hover:bg-[#004488] text-[#FFC700] font-bold py-3 px-8 rounded-xl shadow-lg transition-all duration-300"
+              whileHover={{ 
+                y: -5, 
+                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1)"
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              See League Fixtures
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </>
