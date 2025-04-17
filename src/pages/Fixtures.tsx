@@ -121,7 +121,7 @@ const Fixtures: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue">
       <div 
-        className="absolute top-0 left-0 w-full h-[250px] pointer-events-none opacity-[0.12] overflow-hidden"
+        className="absolute top-[-50px] left-0 w-full h-[250px] pointer-events-none opacity-[0.12] overflow-hidden"
         style={{
           backgroundImage: "url('/assets/logo.png')",
           backgroundSize: "80% auto",
@@ -130,9 +130,9 @@ const Fixtures: React.FC = () => {
         }}
       />
 
-      <div className="relative z-10 py-16 px-4 md:px-8">
+      <div className="relative z-10 py-24 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center mb-8">
+          <div className="flex items-center mb-12">
             <Link 
               to="/" 
               className="text-white hover:text-scrummy-goldYellow transition-colors flex items-center gap-1"
@@ -144,7 +144,7 @@ const Fixtures: React.FC = () => {
 
           <motion.h1 
             className="text-3xl md:text-5xl font-bold text-center mb-16 font-orbitron"
-            initial={{ opacity: 0, y: -20 }}
+            initial {{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
