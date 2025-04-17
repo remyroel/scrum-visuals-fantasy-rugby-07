@@ -125,7 +125,7 @@ const Fixtures: React.FC = () => {
         style={{
           backgroundImage: "url('/assets/logo.png')",
           backgroundSize: "80% auto",
-          backgroundPosition: "center 25%",
+          backgroundPosition: "center 10%",
           backgroundRepeat: "no-repeat",
         }}
       />
