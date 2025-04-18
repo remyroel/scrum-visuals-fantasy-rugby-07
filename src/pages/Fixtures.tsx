@@ -119,96 +119,101 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue relative">
+    <div className="relative min-h-screen">
+      {/* Fixed gradient background */}
+      <div className="fixed inset-0 bg-gradient-to-b from-[#70C0F9] to-[#29A1F6]" />
+      
       {/* Background logo with fixed positioning */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.25]"
+        className="fixed inset-0 pointer-events-none opacity-[0.25]"
         style={{
           backgroundImage: "url('/assets/logo.png')",
           backgroundSize: "contain",
           backgroundPosition: "center 15%", 
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed"
+          backgroundRepeat: "no-repeat"
         }}
       />
 
-      {/* HEADER */}
-      <header className="relative z-20 py-24 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto relative">
-          <div className="flex items-center mb-8">
-            <Link
-              to="/"
-              className="text-white hover:text-scrummy-goldYellow transition-colors flex items-center gap-1"
-            >
-              <ChevronLeft size={20} />
-              <span>Back to Home</span>
-            </Link>
-          </div>
-
-          <motion.h1
-            className="mt-16 text-5xl md:text-7xl font-bold text-center mb-24 font-orbitron"
-            initial={{ y: -20 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-white">Derby Day 2025 </span>
-            <span className="block text-scrummy-goldYellow">Rugby Fixtures</span>
-          </motion.h1>
-        </div>
-      </header>
-
-      {/* MAIN content for fixtures */}
-      <main className="relative z-10 px-4 md:px-8 mt-0">
-        <div className="max-w-6xl mx-auto space-y-12">
-          {fixturesData.map((day, dayIndex) => (
-            <div
-              key={dayIndex}
-              className="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-6 shadow-md"
-            >
-              <h2 className="text-xl md:text-2xl font-semibold mb-4 font-orbitron border-b border-scrummy-lightblue pb-2 flex flex-col md:flex-row md:items-end">
-                <span className="text-scrummy-navyBlue">{day.date}</span>
-                <span className="text-scrummy-goldYellow text-lg md:ml-3">{day.day}</span>
-              </h2>
-
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
+      {/* Scrollable content */}
+      <div className="relative z-20">
+        {/* HEADER */}
+        <header className="relative z-20 py-24 px-4 md:px-8">
+          <div className="max-w-6xl mx-auto relative">
+            <div className="flex items-center mb-8">
+              <Link
+                to="/"
+                className="text-white hover:text-scrummy-goldYellow transition-colors flex items-center gap-1"
               >
-                {day.fixtures.map((fixture, fixtureIndex) => (
-                  <motion.div
-                    key={fixtureIndex}
-                    variants={itemVariants}
-                    whileHover={{
-                      y: -5,
-                      transition: { duration: 0.2 },
-                      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
-                    }}
-                  >
-                    <Card className="h-full border-scrummy-lightblue bg-white/90 transition-all duration-300 hover:bg-white">
-                      <CardContent className="p-4 flex flex-col">
-                        <div className="text-lg font-bold text-scrummy-goldYellow bg-scrummy-navyBlue inline-flex rounded px-3 py-1 self-start mb-3">
-                          {fixture.time}
-                        </div>
-                        <div className="space-y-2 text-center flex-grow flex flex-col justify-center">
-                          <p className="font-medium text-scrummy-navyBlue">{fixture.teamA}</p>
-                          <p className="text-scrummy-navyBlue/60 font-semibold">vs</p>
-                          <p className="font-medium text-scrummy-navyBlue">{fixture.teamB}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </motion.div>
+                <ChevronLeft size={20} />
+                <span>Back to Home</span>
+              </Link>
             </div>
-          ))}
 
-          <div className="mt-12 text-center text-sm text-scrummy-navyBlue/70">
-            <p>St John's College • MUKURU Derby Day 2025</p>
+            <motion.h1
+              className="mt-16 text-5xl md:text-7xl font-bold text-center mb-24 font-orbitron"
+              initial={{ y: -20 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-white">Derby Day 2025 </span>
+              <span className="block text-scrummy-goldYellow">Rugby Fixtures</span>
+            </motion.h1>
           </div>
-        </div>
-      </main>
+        </header>
+
+        {/* MAIN content for fixtures */}
+        <main className="relative z-10 px-4 md:px-8 mt-0">
+          <div className="max-w-6xl mx-auto space-y-12">
+            {fixturesData.map((day, dayIndex) => (
+              <div
+                key={dayIndex}
+                className="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-6 shadow-md"
+              >
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 font-orbitron border-b border-scrummy-lightblue pb-2 flex flex-col md:flex-row md:items-end">
+                  <span className="text-scrummy-navyBlue">{day.date}</span>
+                  <span className="text-scrummy-goldYellow text-lg md:ml-3">{day.day}</span>
+                </h2>
+
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {day.fixtures.map((fixture, fixtureIndex) => (
+                    <motion.div
+                      key={fixtureIndex}
+                      variants={itemVariants}
+                      whileHover={{
+                        y: -5,
+                        transition: { duration: 0.2 },
+                        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+                      }}
+                    >
+                      <Card className="h-full border-scrummy-lightblue bg-white/90 transition-all duration-300 hover:bg-white">
+                        <CardContent className="p-4 flex flex-col">
+                          <div className="text-lg font-bold text-scrummy-goldYellow bg-scrummy-navyBlue inline-flex rounded px-3 py-1 self-start mb-3">
+                            {fixture.time}
+                          </div>
+                          <div className="space-y-2 text-center flex-grow flex flex-col justify-center">
+                            <p className="font-medium text-scrummy-navyBlue">{fixture.teamA}</p>
+                            <p className="text-scrummy-navyBlue/60 font-semibold">vs</p>
+                            <p className="font-medium text-scrummy-navyBlue">{fixture.teamB}</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            ))}
+
+            <div className="mt-12 text-center text-sm text-scrummy-navyBlue/70">
+              <p>St John's College • MUKURU Derby Day 2025</p>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
