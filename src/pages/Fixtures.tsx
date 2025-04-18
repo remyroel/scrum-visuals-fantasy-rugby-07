@@ -121,9 +121,9 @@ const Fixtures: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue">
       {/* HEADER with logo overlay */}
-      <header className="relative overflow-hidden z-10 py-24 px-4 md:px-8">
+      <header className="relative overflow-hidden z-20 py-24 px-4 md:px-8 bg-white/100">
         <div
-          className="absolute inset-[-300px] pointer-events-none opacity-[0.3] overflow-hidden"
+          className="absolute inset-[-300px] pointer-events-none opacity-[0.15] overflow-hidden z-10"
           style={{
             backgroundImage: "url('/assets/logo.png')",
             backgroundSize: "68% auto",
@@ -132,7 +132,7 @@ const Fixtures: React.FC = () => {
           }}
         />
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto relative z-30">
           <div className="flex items-center mb-8">
             <Link
               to="/"
