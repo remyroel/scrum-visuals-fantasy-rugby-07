@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
@@ -120,14 +121,15 @@ const Fixtures: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue relative">
-      {/* Background logo */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.15] overflow-hidden"
+      {/* Background logo with fixed positioning */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.15]"
         style={{
           backgroundImage: "url('/assets/logo.png')",
-          backgroundSize: "68% auto",
-          backgroundPosition: "center top",
-          backgroundRepeat: "no-repeat"
+          backgroundSize: "contain",
+          backgroundPosition: "center 15%", 
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "scroll"
         }}
       />
 
