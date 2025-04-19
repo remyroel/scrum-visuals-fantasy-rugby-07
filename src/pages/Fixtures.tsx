@@ -115,6 +115,27 @@ const itemVariants = {
   }
 };
 
+// Add function to check if a fixture is highlighted
+const isHighlightedFixture = (date: string, time: string, teamA: string, teamB: string) => {
+  const highlightedGames = [
+    { date: "April 29th", time: "15:40", teamA: "ST GEORGE'S 1XV", teamB: "ST ANDREW'S 1XV" },
+    { date: "May 1st", time: "9:20", teamA: "ST GEORGE'S 1XV", teamB: "PRINCE EDWARD 1XV" },
+    { date: "May 1st", time: "13:20", teamA: "PETERHOUSE 1XV", teamB: "ST ANDREW'S 1XV" },
+    { date: "May 1st", time: "14:40", teamA: "ST JOHN'S 1XV", teamB: "ST ALBANS 1XV" },
+    { date: "May 1st", time: "16:00", teamA: "ZIM STEELERS", teamB: "SHARKS U20" },
+    { date: "May 3rd", time: "13:00", teamA: "LOMAGUNDI 1XV", teamB: "ST GEORGE'S 1XV" },
+    { date: "May 3rd", time: "14:20", teamA: "FALCON 1XV", teamB: "ST ALBANS 1XV" },
+    { date: "May 3rd", time: "15:40", teamA: "ST JOHN'S 1XV", teamB: "ST ANDREW'S 1XV" }
+  ];
+
+  return highlightedGames.some(game => 
+    game.date === date && 
+    game.time === time && 
+    game.teamA === teamA && 
+    game.teamB === teamB
+  );
+};
+
 const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
@@ -167,26 +188,33 @@ const Fixtures: React.FC = () => {
                   initial="hidden"
                   animate="visible"
                 >
-                  {day.fixtures.map((f, i) => (
-                    <motion.div
-                      key={i}
-                      variants={itemVariants}
-                      whileHover={{ y: -5, transition: { duration: 0.2 }, boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)" }}
-                    >
-                      <Card className="h-full border-scrummy-lightblue bg-white/60 transition-all duration-300 hover:bg-white/90">
-                        <CardContent className="p-4 flex flex-col">
-                          <div className="text-lg font-bold text-scrummy-goldYellow bg-scrummy-navyBlue inline-flex rounded px-3 py-1 self-start mb-3">
-                            {f.time}
-                          </div>
-                          <div className="space-y-2 text-center flex-grow flex flex-col justify-center">
-                            <p className="font-medium text-scrummy-navyBlue">{f.teamA}</p>
-                            <p className="text-scrummy-navyBlue/60 font-semibold">vs</p>
-                            <p className="font-medium text-scrummy-navyBlue">{f.teamB}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
+                  {day.fixtures.map((f, i) => {
+                    const isHighlighted = isHighlightedFixture(day.date, f.time, f.teamA, f.teamB);
+                    return (
+                      <motion.div
+                        key={i}
+                        variants={itemVariants}
+                        whileHover={{ 
+                          y: isHighlighted ? -8 : -5, 
+                          transition: { duration: 0.2 }
+                        }}
+                      >
+                        <Card className={`h-full border-scrummy-lightblue bg-white/60 transition-all duration-300 hover:bg-white/90
+                          ${isHighlighted ? 'border-2 border-scrummy-goldYellow shadow-[0_0_15px_rgba(255,199,0,0.3)] hover:shadow-[0_0_20px_rgba(255,199,0,0.4)]' : ''}`}>
+                          <CardContent className="p-4 flex flex-col">
+                            <div className={`text-lg font-bold ${isHighlighted ? 'text-scrummy-navyBlue bg-scrummy-goldYellow' : 'text-scrummy-goldYellow bg-scrummy-navyBlue'} inline-flex rounded px-3 py-1 self-start mb-3`}>
+                              {f.time}
+                            </div>
+                            <div className="space-y-2 text-center flex-grow flex flex-col justify-center">
+                              <p className={`font-medium text-scrummy-navyBlue ${isHighlighted ? 'font-bold' : ''}`}>{f.teamA}</p>
+                              <p className="text-scrummy-navyBlue/60 font-semibold">vs</p>
+                              <p className={`font-medium text-scrummy-navyBlue ${isHighlighted ? 'font-bold' : ''}`}>{f.teamB}</p>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    );
+                  })}
                 </motion.div>
               </div>
             ))}
