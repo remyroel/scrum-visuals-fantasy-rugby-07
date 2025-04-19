@@ -101,7 +101,7 @@ const Index: React.FC = () => {
               }}
               whileTap={{ scale: 0.98 }}
             >
-              See League Fixtures
+              See Derby Day Fixtures
             </motion.a>
           </motion.div>
 
