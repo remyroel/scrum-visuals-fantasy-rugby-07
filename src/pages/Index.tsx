@@ -182,9 +182,7 @@ const Index: React.FC = () => {
             className="text-center mt-8 space-y-4"
           >
             <p className="text-[#003366] text-lg md:text-xl font-medium max-w-2xl mx-auto">
-              SCRUMMY is sponsoring the U20 Durban Sharks Rugby Team at the Derby Day Tournament - April 28-May 3, 2025.
-              <br />
-              <span className="text-[#FFC700] font-bold">CLICK HERE</span>
+              SCRUMMY is sponsoring the U20 Durban Sharks Rugby Team at the <br></br>Derby Day Tournament - April 28-May 3, 2025.            
             </p>
             <motion.a
               href="/fixtures"
