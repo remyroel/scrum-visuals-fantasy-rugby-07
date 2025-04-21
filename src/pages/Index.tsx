@@ -90,20 +90,6 @@ const Index: React.FC = () => {
           >
             Be the First to Join the Scrum!
           </motion.p>
-          
-          <motion.div variants={itemVariants} className="mb-10">
-            <motion.a
-              href="/fixtures"
-              className="inline-block bg-[#003366] hover:bg-[#004488] text-[#FFC700] font-bold py-3 px-8 rounded-xl shadow-lg transition-all duration-300"
-              whileHover={{ 
-                y: -5, 
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1)"
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              See Derby Day Fixtures
-            </motion.a>
-          </motion.div>
 
           <motion.div
             variants={itemVariants}
@@ -122,7 +108,7 @@ const Index: React.FC = () => {
           {/* Social Media Icons */}
           <motion.div
             variants={itemVariants}
-            className="flex gap-8 mb-8 justify-center"
+            className="flex gap-8 mb-16 justify-center"
           >
             <motion.a
               href="https://www.instagram.com/scrum_myy/"
@@ -189,6 +175,29 @@ const Index: React.FC = () => {
           >
             <em>Spots are limited—reserve your early access now!</em>
           </motion.p>
+
+          {/* New Derby Day Description and Button */}
+          <motion.div
+            variants={itemVariants}
+            className="text-center mt-8 space-y-4"
+          >
+            <p className="text-[#003366] text-lg md:text-xl font-medium max-w-2xl mx-auto">
+              SCRUMMY is sponsoring the U20 Durban Sharks Rugby Team at the Derby Day Tournament - April 28-May 3, 2025.
+              <br />
+              <span className="text-[#FFC700] font-bold">CLICK HERE</span>
+            </p>
+            <motion.a
+              href="/fixtures"
+              className="inline-block bg-[#003366] hover:bg-[#004488] text-[#FFC700] font-bold py-3 px-8 rounded-xl shadow-lg transition-all duration-300"
+              whileHover={{ 
+                y: -5, 
+                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1)"
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              See Derby Day Fixtures
+            </motion.a>
+          </motion.div>
           
         </motion.div>
       </div>
