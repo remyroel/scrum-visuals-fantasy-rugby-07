@@ -81,7 +81,7 @@ const Index: React.FC = () => {
           >
             <span className="text-[#003366]">FANTASY RUGBY</span>
             <br />
-            <span className="text-[#FFC700] text-3xl md:text-5xl">REIMAGINED</span>
+            <span className="text-[#FFC700]">REIMAGINED</span>
           </motion.h1>
 
           <motion.p
