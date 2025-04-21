@@ -176,16 +176,31 @@ const Index: React.FC = () => {
             <em>Spots are limited—reserve your early access now!</em>
           </motion.p>
 
-          {/* New Derby Day Description and Button */}
+          {/* Derby Day Section */}
           <motion.div
-            variants={itemVariants}
-            className="text-center mt-8 space-y-4"
+            variants={containerVariants}
+            className="text-center mt-16 space-y-6 px-4 max-w-4xl mx-auto"
+            initial="hidden"
+            animate="visible"
           >
-            <p className="text-[#003366] text-lg md:text-xl font-medium max-w-2xl mx-auto">
-              SCRUMMY is sponsoring the U20 Durban Sharks Rugby Team at the <br></br>Derby Day Tournament - April 28-May 3, 2025.            
-            </p>
+            <motion.div 
+              variants={itemVariants} 
+              className="bg-[#003366]/10 rounded-xl p-6 shadow-sm"
+            >
+              <h3 className="text-[#003366] font-orbitron text-2xl md:text-3xl font-bold mb-4 tracking-wider">
+                DERBY DAY SPONSORSHIP
+              </h3>
+              <p className="text-[#003366] text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+                SCRUMMY is proud to sponsor the <span className="font-semibold text-[#FFC700]">U20 Durban Sharks Rugby Team</span> at the Derby Day Tournament
+              </p>
+              <p className="text-[#003366]/80 text-base mt-2">
+                April 28 - May 3, 2025
+              </p>
+            </motion.div>
+
             <motion.a
               href="/fixtures"
+              variants={itemVariants}
               className="inline-block bg-[#003366] hover:bg-[#004488] text-[#FFC700] font-bold py-3 px-8 rounded-xl shadow-lg transition-all duration-300"
               whileHover={{ 
                 y: -5, 
@@ -196,7 +211,6 @@ const Index: React.FC = () => {
               See Derby Day Fixtures
             </motion.a>
           </motion.div>
-          
         </motion.div>
       </div>
     </>
