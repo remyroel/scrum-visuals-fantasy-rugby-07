@@ -199,8 +199,15 @@ const Fixtures: React.FC = () => {
                           transition: { duration: 0.2 }
                         }}
                       >
-                        <Card className={`h-full border-scrummy-lightblue bg-white/60 transition-all duration-300 hover:bg-white/90
+                        <Card className={`h-full border-scrummy-lightblue bg-white/60 transition-all duration-300 hover:bg-white/90 relative
                           ${isHighlighted ? 'border-2 border-scrummy-goldYellow shadow-[0_0_15px_rgba(255,199,0,0.3)] hover:shadow-[0_0_20px_rgba(255,199,0,0.4)]' : ''}`}>
+                          {isHighlighted && (
+                            <img
+                              src="/assets/logo.png"
+                              alt="SCRUMMY"
+                              className="absolute top-2 right-2 w-8 h-8 object-contain opacity-80"
+                            />
+                          )}
                           <CardContent className="p-4 flex flex-col">
                             <div className={`text-lg font-bold ${isHighlighted ? 'text-scrummy-navyBlue bg-scrummy-goldYellow' : 'text-scrummy-goldYellow bg-scrummy-navyBlue'} inline-flex rounded px-3 py-1 self-start mb-3`}>
                               {f.time}
