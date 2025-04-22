@@ -140,7 +140,7 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="relative bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue">
+    <div className="relative text-scrummy-navyBlue">
       {/* Scrollable content wrapper */}
       <div className="relative z-20">
         {/* Logo overlay behind both header and fixtures */}
