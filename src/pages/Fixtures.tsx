@@ -158,7 +158,7 @@ const Fixtures: React.FC = () => {
         <header className="relative py-24 px-4 md:px-8">
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="flex items-center mb-8">
-              <Link to="/" className="text-white hover:text-scrummy-goldYellow transition-colors flex items-center gap-1">
+              <Link to="/" className="text-scrummy-navyBlue hover:text-scrummy-goldYellow transition-colors flex items-center gap-1">
                 <ChevronLeft size={20} />
                 <span>Back to Home</span>
               </Link>
@@ -167,7 +167,7 @@ const Fixtures: React.FC = () => {
               className="mt-8 text-5xl md:text-7xl font-bold text-center mb-24 font-orbitron relative z-10"
               initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.6 }}
             >
-              <span className="text-white">Derby Day 2025</span>
+              <span className="text-scrummy-navyBlue">Derby Day 2025</span>
               <span className="block text-scrummy-goldYellow">Rugby Fixtures</span>
             </motion.h1>
           </div>
