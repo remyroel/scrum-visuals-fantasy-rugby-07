@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import ThreeScene from "../components/ThreeScene";
 import CountdownTimer from "../components/CountdownTimer";
@@ -6,6 +6,7 @@ import WaitlistForm from "../components/WaitlistForm";
 import Logo from "../components/Logo";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import { FaTiktok } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 // Set target date to May 12, 2025 at 00:00 (midnight) Eastern Time
 const LAUNCH_DATE = new Date('2025-05-12T00:00:00-04:00');
@@ -59,7 +60,7 @@ const Index: React.FC = () => {
       <ThreeScene />
 
       <div
-        className="content-container min-h-screen flex flex-col items-center justify-center px-4 py-12"
+        className="content-container min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-b from-[#003366] to-[#00A6FF]"
         style={{ paddingBottom: 200 }}
       >
         <motion.div
