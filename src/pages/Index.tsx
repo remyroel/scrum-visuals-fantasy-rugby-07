@@ -6,6 +6,7 @@ import WaitlistForm from "../components/WaitlistForm";
 import Logo from "../components/Logo";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import { FaTiktok } from 'react-icons/fa';
+import BackgroundAnimation from "../components/BackgroundAnimation";
 
 // Set target date to May 12, 2025 at 00:00 (midnight) Eastern Time
 const LAUNCH_DATE = new Date('2025-05-12T00:00:00-04:00');
@@ -56,6 +57,7 @@ const floatingAnimation = {
 const Index: React.FC = () => {
   return (
     <>
+      <BackgroundAnimation />
       <ThreeScene />
 
       <div

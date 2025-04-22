@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import BackgroundAnimation from "../components/BackgroundAnimation";
 
 // Define types for our fixtures data
 type Fixture = {
@@ -140,20 +141,10 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="relative bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue">
+    <div className="relative">
+      <BackgroundAnimation />
       {/* Scrollable content wrapper */}
       <div className="relative z-20">
-        {/* Logo overlay behind both header and fixtures */}
-        <div
-          className="absolute inset-x-0 top-[-120px] h-[1000px] pointer-events-none opacity-[0.25]"
-          style={{
-            backgroundImage: "url('/assets/logo.png')",
-            backgroundSize: "contain",
-            backgroundPosition: "center top",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-
         {/* HEADER */}
         <header className="relative py-24 px-4 md:px-8">
           <div className="max-w-6xl mx-auto relative z-10">
