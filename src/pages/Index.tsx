@@ -191,7 +191,7 @@ const Index: React.FC = () => {
                 THE MUKURU DERBY DAY RUGBY FESTIVAL IN ZIMBABWE
               </h3>
               <p className="text-[#003366] text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-                SCRUMMY is proud to sponsor the <span className="font-semibold">U20 Sharks Rugby Team and the match between the Sharks and the Zim Steelers</span> on May 1st.
+                SCRUMMY is proud to sponsor the <span className="font-semibold">U20 Sharks Rugby Team</span> and the match between the <span className="font-semibold">Sharks and the Zim Steelers</span> on May 1st.
               </p>
               <p className="text-[#003366]/80 text-base mt-2">
                 April 28 - May 3, 2025
