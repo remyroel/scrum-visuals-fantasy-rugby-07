@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
@@ -141,7 +140,7 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#003366] to-[#00A6FF] text-scrummy-navyBlue">
+    <div className="relative bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue">
       {/* Scrollable content wrapper */}
       <div className="relative z-20">
         {/* Logo overlay behind both header and fixtures */}
