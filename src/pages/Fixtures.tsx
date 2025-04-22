@@ -140,10 +140,10 @@ const Fixtures: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="relative bg-gradient-to-b from-[#003366] to-[#00A6FF] text-white min-h-screen">
+    <div className="relative bg-gradient-to-b from-[#70C0F9] to-[#29A1F6] text-scrummy-navyBlue">
       {/* Scrollable content wrapper */}
       <div className="relative z-20">
-        {/* Logo overlay */}
+        {/* Logo overlay behind both header and fixtures */}
         <div
           className="absolute inset-x-0 top-[-120px] h-[1000px] pointer-events-none opacity-[0.25]"
           style={{
@@ -173,12 +173,12 @@ const Fixtures: React.FC = () => {
           </div>
         </header>
 
-        {/* MAIN content for fixtures */}
+        {/* MAIN content for fixtures; added positive top margin to space below header */}
         <main className="relative z-10 px-4 md:px-8 mt-16">
           <div className="max-w-6xl mx-auto space-y-12">
             {fixturesData.map((day, idx) => (
-              <div key={idx} className="bg-white/20 backdrop-blur-sm rounded-xl p-4 md:p-6 shadow-md">
-                <h2 className="text-xl md:text-2xl font-semibold mb-4 font-orbitron border-b border-white/30 pb-2 flex flex-col md:flex-row md:items-end">
+              <div key={idx} className="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-6 shadow-md">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 font-orbitron border-b border-scrummy-lightblue pb-2 flex flex-col md:flex-row md:items-end">
                   <span className="text-scrummy-navyBlue">{day.date}</span>
                   <span className="text-scrummy-goldYellow text-lg md:ml-3">{day.day}</span>
                 </h2>
@@ -199,7 +199,7 @@ const Fixtures: React.FC = () => {
                           transition: { duration: 0.2 }
                         }}
                       >
-                        <Card className={`h-full border-white/30 bg-white/20 backdrop-blur-sm transition-all duration-300 hover:bg-white/30 relative
+                        <Card className={`h-full border-scrummy-lightblue bg-white/60 transition-all duration-300 hover:bg-white/90 relative
                           ${isHighlighted ? 'border-2 border-scrummy-goldYellow shadow-[0_0_15px_rgba(255,199,0,0.3)] hover:shadow-[0_0_20px_rgba(255,199,0,0.4)]' : ''}`}>
                           {isHighlighted && (
                             <img
@@ -208,14 +208,14 @@ const Fixtures: React.FC = () => {
                               className="absolute top-2 right-2 w-8 h-8 object-contain opacity-80"
                             />
                           )}
-                          <CardContent className="p-4 flex flex-col text-white">
+                          <CardContent className="p-4 flex flex-col">
                             <div className={`text-lg font-bold ${isHighlighted ? 'text-scrummy-navyBlue bg-scrummy-goldYellow' : 'text-scrummy-goldYellow bg-scrummy-navyBlue'} inline-flex rounded px-3 py-1 self-start mb-3`}>
                               {f.time}
                             </div>
                             <div className="space-y-2 text-center flex-grow flex flex-col justify-center">
-                              <p className={`font-medium ${isHighlighted ? 'font-bold' : ''}`}>{f.teamA}</p>
-                              <p className="text-white/60 font-semibold">vs</p>
-                              <p className={`font-medium ${isHighlighted ? 'font-bold' : ''}`}>{f.teamB}</p>
+                              <p className={`font-medium text-scrummy-navyBlue ${isHighlighted ? 'font-bold' : ''}`}>{f.teamA}</p>
+                              <p className="text-scrummy-navyBlue/60 font-semibold">vs</p>
+                              <p className={`font-medium text-scrummy-navyBlue ${isHighlighted ? 'font-bold' : ''}`}>{f.teamB}</p>
                             </div>
                           </CardContent>
                         </Card>
@@ -225,7 +225,7 @@ const Fixtures: React.FC = () => {
                 </motion.div>
               </div>
             ))}
-            <div className="mt-12 text-center text-sm text-white/70">
+            <div className="mt-12 text-center text-sm text-scrummy-navyBlue/70">
               <p>St John's College • MUKURU Derby Day 2025</p>
             </div>
           </div>
