@@ -1,26 +1,98 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import ThreeScene from "../components/ThreeScene";
-import CountdownTimer from "../components/CountdownTimer";
-import WaitlistForm from "../components/WaitlistForm";
-import Logo from "../components/Logo";
-import { Instagram, Facebook, Youtube } from "lucide-react";
-import { FaTiktok } from 'react-icons/fa';
+import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { ChevronLeft } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-// Set target date to May 12, 2025 at 00:00 (midnight) Eastern Time
-const LAUNCH_DATE = new Date('2025-05-12T00:00:00-04:00');
-
-// For debugging
-const now = new Date();
-const options: Intl.DateTimeFormatOptions = {
-  timeZone: 'America/New_York',
-  hour12: true,
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric'
+// Define types for our fixtures data
+type Fixture = {
+  time: string;
+  teamA: string;
+  teamB: string;
 };
-console.log('Current time (EST):', now.toLocaleString('en-US', options));
-console.log('Launch time (EST):', LAUNCH_DATE.toLocaleString('en-US', options));
+
+type FixtureDay = {
+  date: string;
+  day: string;
+  fixtures: Fixture[];
+};
+
+// Fixture data
+const fixturesData: FixtureDay[] = [
+  {
+    date: "April 28th",
+    day: "Monday",
+    fixtures: [
+      { time: "9:00",  teamA: "EAGLESVALE 2XV",  teamB: "WATERSHED 2XV" },
+      { time: "10:20", teamA: "GOLDRIDGE 1XV",   teamB: "GATEWAY 1XV" },
+      { time: "11:40", teamA: "WATERSHED 1XV",  teamB: "MIDLANDS CC 1XV" },
+      { time: "13:00", teamA: "MILTON 1XV",     teamB: "WISE OWL 1XV" },
+      { time: "14:20", teamA: "HILLCREST 1XV",  teamB: "EAGLESVALE 1XV" },
+      { time: "15:40", teamA: "RYDINGS 1XV",    teamB: "HERITAGE 1XV" }
+    ]
+  },
+  {
+    date: "April 29th",
+    day: "Tuesday",
+    fixtures: [
+      { time: "9:00",  teamA: "CHURCHILL 2XV", teamB: "LOMAGUNDI 2XV" },
+      { time: "10:20", teamA: "FALCON 2XV",    teamB: "ST ALBANS 2XV" },
+      { time: "11:40", teamA: "PETERHOUSE 2XV",teamB: "ST GEORGE'S 2XV" },
+      { time: "13:00", teamA: "ST JOHN'S 2XV", teamB: "PRINCE EDWARD'S 2XV" },
+      { time: "14:20", teamA: "LOMAGUNDI 1XV", teamB: "ST ALBANS 1XV" },
+      { time: "15:40", teamA: "ST GEORGE'S 1XV",teamB: "ST ANDREW'S 1XV" }
+    ]
+  },
+  {
+    date: "April 30th",
+    day: "Wednesday",
+    fixtures: [
+      { time: "10:20", teamA: "WATERSHED 2XV", teamB: "CBC 2XV" },
+      { time: "11:40", teamA: "RYDINGS 1XV",   teamB: "MIDLANDS CC 1XV" },
+      { time: "13:00", teamA: "GOLDRIDGE 1XV", teamB: "HILLCREST 1XV" },
+      { time: "14:20", teamA: "EAGLESVALE 1XV",teamB: "HERITAGE 1XV" },
+      { time: "15:40", teamA: "WATERSHED 1XV", teamB: "GATEWAY 1XV" }
+    ]
+  },
+  {
+    date: "May 1st",
+    day: "Thursday",
+    fixtures: [
+      { time: "8:00",  teamA: "ST GEORGE'S 2XV",  teamB: "ST ALBANS 2XV" },
+      { time: "9:20",  teamA: "ST GEORGE'S 1XV",  teamB: "PRINCE EDWARD 1XV" },
+      { time: "10:40", teamA: "CBC 1XV",          teamB: "FALCON 1XV" },
+      { time: "12:00", teamA: "LOMAGUNDI 1XV",   teamB: "CHURCHILL 1XV" },
+      { time: "13:20", teamA: "PETERHOUSE 1XV", teamB: "ST ANDREW'S 1XV" },
+      { time: "14:40", teamA: "ST JOHN'S 1XV",   teamB: "ST ALBANS 1XV" },
+      { time: "16:00", teamA: "ZIM STEELERS",    teamB: "SHARKS U20" }
+    ]
+  },
+  {
+    date: "May 2nd",
+    day: "Friday",
+    fixtures: [
+      { time: "9:00",  teamA: "MILTON 2XV",      teamB: "WISE OWL 2XV" },
+      { time: "10:20", teamA: "EAGLESVALE 2XV", teamB: "CBC 2XV" },
+      { time: "11:40", teamA: "MILTON 1XV",     teamB: "LOMAGUNDI 2XV" },
+      { time: "13:00", teamA: "PRINCE EDWARD 2XV", teamB: "CHURCHILL 2XV" },
+      { time: "14:20", teamA: "RYDINGS 1XV",    teamB: "WISE OWL 1XV" },
+      { time: "15:40", teamA: "PETERHOUSE 2XV",teamB: "FALCON 2XV" }
+    ]
+  },
+  {
+    date: "May 3rd",
+    day: "Saturday",
+    fixtures: [
+      { time: "9:00",  teamA: "ST JOHNS 2XV",  teamB: "ST ALBANS 2XV" },
+      { time: "10:20", teamA: "CBC 1XV",       teamB: "PETERHOUSE 1XV" },
+      { time: "11:40", teamA: "PRINCE EDWARD 1XV", teamB: "CHURCHILL 1XV" },
+      { time: "13:00", teamA: "LOMAGUNDI 1XV",teamB: "ST GEORGE'S 1XV" },
+      { time: "14:20", teamA: "FALCON 1XV",    teamB: "ST ALBANS 1XV" },
+      { time: "15:40", teamA: "ST JOHN'S 1XV", teamB: "ST ANDREW'S 1XV" }
+    ]
+  }
+];
 
 // Animation variants for staggered animations
 const containerVariants = {
@@ -28,10 +100,10 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
-    },
-  },
+      delayChildren: 0.1,
+      staggerChildren: 0.05
+    }
+  }
 };
 
 const itemVariants = {
@@ -39,182 +111,128 @@ const itemVariants = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: { type: "spring", stiffness: 100 },
-  },
-};
-
-const floatingAnimation = {
-  y: [0, -8, 0],
-  transition: {
-    duration: 2,
-    ease: "easeInOut",
-    repeat: Infinity,
-    repeatType: "reverse" as const
+    transition: { type: "spring", stiffness: 100 }
   }
 };
 
-const Index: React.FC = () => {
-  return (
-    <>
-      <ThreeScene />
+// Add function to check if a fixture is highlighted
+const isHighlightedFixture = (date: string, time: string, teamA: string, teamB: string) => {
+  const highlightedGames = [
+    { date: "April 29th", time: "15:40", teamA: "ST GEORGE'S 1XV", teamB: "ST ANDREW'S 1XV" },
+    { date: "May 1st", time: "9:20", teamA: "ST GEORGE'S 1XV", teamB: "PRINCE EDWARD 1XV" },
+    { date: "May 1st", time: "13:20", teamA: "PETERHOUSE 1XV", teamB: "ST ANDREW'S 1XV" },
+    { date: "May 1st", time: "14:40", teamA: "ST JOHN'S 1XV", teamB: "ST ALBANS 1XV" },
+    { date: "May 1st", time: "16:00", teamA: "ZIM STEELERS", teamB: "SHARKS U20" },
+    { date: "May 3rd", time: "13:00", teamA: "LOMAGUNDI 1XV", teamB: "ST GEORGE'S 1XV" },
+    { date: "May 3rd", time: "14:20", teamA: "FALCON 1XV", teamB: "ST ALBANS 1XV" },
+    { date: "May 3rd", time: "15:40", teamA: "ST JOHN'S 1XV", teamB: "ST ANDREW'S 1XV" }
+  ];
 
-      <div
-        className="content-container min-h-screen flex flex-col items-center justify-center px-4 py-12"
-        style={{ paddingBottom: 200 }}
-      >
-        <motion.div
-          className="max-w-6xl w-full mx-auto flex flex-col items-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="w-full flex justify-center"
-          >
-            <Logo className="mb-10" />
-          </motion.div>
-
-          <motion.h1
-            variants={itemVariants}
-            className="font-orbitron text-4xl md:text-7xl font-bold text-center mb-6 tracking-wider leading-tight"
-          >
-            <span className="text-[#003366]">FANTASY RUGBY</span>
-            <br />
-            <span className="text-[#FFC700]">REIMAGINED</span>
-          </motion.h1>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-scrummy-blue text-lg md:text-xl lg:text-2xl text-center max-w-3xl mb-8 md:mb-16 leading-relaxed font-light"
-          >
-            Be the First to Join the Scrum!
-          </motion.p>
-
-          <motion.div
-            variants={itemVariants}
-            className="mb-8 md:mb-16 w-full flex justify-center"
-          >
-            <CountdownTimer targetDate={LAUNCH_DATE} />
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="mb-8 w-full max-w-lg mx-auto"
-          >
-            <WaitlistForm />
-          </motion.div>
-
-          {/* Social Media Icons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex gap-8 mb-16 justify-center"
-          >
-            <motion.a
-              href="https://www.instagram.com/scrum_myy/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#003366] hover:text-[#FFC700] transition-colors p-2"
-              whileHover={{ scale: 1.1, y: 0 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              animate={floatingAnimation}
-            >
-              <Instagram size={32} strokeWidth={2} />
-            </motion.a>
-            <motion.a
-              href="https://www.facebook.com/profile.php?id=61574057183440"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#003366] hover:text-[#FFC700] transition-colors p-2"
-              whileHover={{ scale: 1.1, y: 0 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              animate={{
-                ...floatingAnimation,
-                transition: { ...floatingAnimation.transition, delay: 0.3 }
-              }}
-            >
-              <Facebook size={32} strokeWidth={2} />
-            </motion.a>
-            <motion.a
-              href="https://www.tiktok.com/@scrummy_fantasy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#003366] hover:text-[#FFC700] transition-colors p-2"
-              whileHover={{ scale: 1.1, y: 0 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              animate={{
-                ...floatingAnimation,
-                transition: { ...floatingAnimation.transition, delay: 0.6 }
-              }}
-            >
-              <FaTiktok size={30} />
-            </motion.a>
-            <motion.a
-              href="https://www.youtube.com/channel/UCnKVk_L_fda9OuA5vDZBmmA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#003366] hover:text-[#FFC700] transition-colors p-2"
-              whileHover={{ scale: 1.1, y: 0 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              animate={{
-                ...floatingAnimation,
-                transition: { ...floatingAnimation.transition, delay: 0.9 }
-              }}
-            >
-              <Youtube size={32} strokeWidth={2} />
-            </motion.a>
-          </motion.div>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-[#003366] text-sm md:text-base italic text-center max-w-md mb-6"
-          >
-            <em>Spots are limited—reserve your early access now!</em>
-          </motion.p>
-
-          {/* Derby Day Section */}
-          <motion.div
-            variants={containerVariants}
-            className="text-center mt-16 space-y-6 px-4 max-w-4xl mx-auto"
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.div 
-              variants={itemVariants} 
-              className="bg-[#003366]/10 rounded-xl p-6 shadow-sm"
-            >
-              <h3 className="text-[#003366] font-orbitron text-2xl md:text-3xl font-bold mb-4 tracking-wider">
-                THE MUKURU DERBY DAY RUGBY FESTIVAL IN ZIMBABWE
-              </h3>
-              <p className="text-[#003366] text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-                SCRUMMY is proud to sponsor the <span className="font-semibold">U20 Sharks Rugby Team</span> and the match between the <span className="font-semibold">Sharks and the Zim Steelers</span> on May 1st.
-              </p>
-              <p className="text-[#003366]/80 text-base mt-2">
-                April 28 - May 3, 2025
-              </p>
-            </motion.div>
-
-            <motion.a
-              href="/fixtures"
-              variants={itemVariants}
-              className="inline-block bg-[#003366] hover:bg-[#004488] text-[#FFC700] font-bold py-3 px-8 rounded-xl shadow-lg transition-all duration-300"
-              whileHover={{ 
-                y: -5, 
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1)"
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              See Derby Day Fixtures
-            </motion.a>
-          </motion.div>
-        </motion.div>
-      </div>
-    </>
+  return highlightedGames.some(game => 
+    game.date === date && 
+    game.time === time && 
+    game.teamA === teamA && 
+    game.teamB === teamB
   );
 };
 
-export default Index;
+const Fixtures: React.FC = () => {
+  const isMobile = useIsMobile();
+
+  return (
+    <div className="relative text-scrummy-navyBlue">
+      {/* Scrollable content wrapper */}
+      <div className="relative z-20">
+        {/* Logo overlay behind both header and fixtures */}
+        <div
+          className="absolute inset-x-0 top-[180px] h-[500px] pointer-events-none"
+          style={{
+            backgroundImage: "url('/assets/logo.png')",
+            backgroundSize: "contain",
+            backgroundPosition: "center top",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+
+        {/* HEADER */}
+        <header className="relative py-24 px-4 md:px-8">
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="flex items-center mb-8">
+              <Link to="/" className="text-scrummy-navyBlue hover:text-scrummy-goldYellow transition-colors flex items-center gap-1">
+                <ChevronLeft size={20} />
+                <span>Back to Home</span>
+              </Link>
+            </div>
+            <motion.h1
+              className="mt-8 text-5xl md:text-7xl font-bold text-center mb-24 font-orbitron relative z-10"
+              initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.6 }}
+            >
+              <span className="text-scrummy-navyBlue">Derby Day 2025</span>
+              <span className="block text-scrummy-goldYellow">Rugby Fixtures</span>
+            </motion.h1>
+          </div>
+        </header>
+
+        {/* MAIN content for fixtures; added positive top margin to space below header */}
+        <main className="relative z-10 px-4 md:px-8 mt-16">
+          <div className="max-w-6xl mx-auto space-y-12">
+            {fixturesData.map((day, idx) => (
+              <div key={idx} className="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-6 shadow-md">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 font-orbitron border-b border-scrummy-lightblue pb-2 flex flex-col md:flex-row md:items-end">
+                  <span className="text-scrummy-navyBlue">{day.date}</span>
+                  <span className="text-scrummy-goldYellow text-lg md:ml-3">{day.day}</span>
+                </h2>
+                <motion.div
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {day.fixtures.map((f, i) => {
+                    const isHighlighted = isHighlightedFixture(day.date, f.time, f.teamA, f.teamB);
+                    return (
+                      <motion.div
+                        key={i}
+                        variants={itemVariants}
+                        whileHover={{ 
+                          y: isHighlighted ? -8 : -5, 
+                          transition: { duration: 0.2 }
+                        }}
+                      >
+                        <Card className={`h-full border-scrummy-lightblue bg-white/60 transition-all duration-300 hover:bg-white/90 relative
+                          ${isHighlighted ? 'border-2 border-scrummy-goldYellow shadow-[0_0_15px_rgba(255,199,0,0.3)] hover:shadow-[0_0_20px_rgba(255,199,0,0.4)]' : ''}`}>
+                          {isHighlighted && (
+                            <img
+                              src="/assets/logo.png"
+                              alt="SCRUMMY"
+                              className="absolute top-2 right-2 w-8 h-8 object-contain opacity-80"
+                            />
+                          )}
+                          <CardContent className="p-4 flex flex-col">
+                            <div className={`text-lg font-bold ${isHighlighted ? 'text-scrummy-navyBlue bg-scrummy-goldYellow' : 'text-scrummy-goldYellow bg-scrummy-navyBlue'} inline-flex rounded px-3 py-1 self-start mb-3`}>
+                              {f.time}
+                            </div>
+                            <div className="space-y-2 text-center flex-grow flex flex-col justify-center">
+                              <p className={`font-medium text-scrummy-navyBlue ${isHighlighted ? 'font-bold' : ''}`}>{f.teamA}</p>
+                              <p className="text-scrummy-navyBlue/60 font-semibold">vs</p>
+                              <p className={`font-medium text-scrummy-navyBlue ${isHighlighted ? 'font-bold' : ''}`}>{f.teamB}</p>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              </div>
+            ))}
+            <div className="mt-12 text-center text-sm text-scrummy-navyBlue/70">
+              <p>St John's College • MUKURU Derby Day 2025</p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default Fixtures;
