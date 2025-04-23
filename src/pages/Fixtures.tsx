@@ -65,7 +65,7 @@ const fixturesData: FixtureDay[] = [
       { time: "12:00", teamA: "LOMAGUNDI 1XV",   teamB: "CHURCHILL 1XV" },
       { time: "13:20", teamA: "PETERHOUSE 1XV", teamB: "ST ANDREW'S 1XV" },
       { time: "14:40", teamA: "ST JOHN'S 1XV",   teamB: "ST ALBANS 1XV" },
-      { time: "16:00", teamA: "ZIM STEELERS",    teamB: "SHARKS U20" }
+      { time: "16:00", teamA: "ZAM STEELERS",    teamB: "SHARKS U20" }
     ]
   },
   {
@@ -84,7 +84,7 @@ const fixturesData: FixtureDay[] = [
     date: "May 3rd",
     day: "Saturday",
     fixtures: [
-      { time: "9:00",  teamA: "ST JOHNS 2XV",  teamB: "ST ALBANS 2XV" },
+      { time: "9:00",  teamA: "ST JOHN'S 2XV",  teamB: "ST ALBANS 2XV" },
       { time: "10:20", teamA: "CBC 1XV",       teamB: "PETERHOUSE 1XV" },
       { time: "11:40", teamA: "PRINCE EDWARD 1XV", teamB: "CHURCHILL 1XV" },
       { time: "13:00", teamA: "LOMAGUNDI 1XV",teamB: "ST GEORGE'S 1XV" },
@@ -93,6 +93,46 @@ const fixturesData: FixtureDay[] = [
     ]
   }
 ];
+
+// Map team names to logo paths
+const teamLogoMap: Record<string, string> = {
+  "EAGLESVALE 2XV": "/assets/Eaglesvale.png",
+  "WATERSHED 2XV": "/assets/Watershed.png",
+  "GOLDRIDGE 1XV": "/assets/Goldridge.png",
+  "GATEWAY 1XV": "/assets/Gateway.png",
+  "WATERSHED 1XV": "/assets/Watershed.png",
+  "MIDLANDS CC 1XV": "/assets/MidlandsCC.png",
+  "MILTON 1XV": "/assets/Milton.png",
+  "WISE OWL 1XV": "/assets/WiseOwl.png",
+  "HILLCREST 1XV": "/assets/Hillcrest.png",
+  "EAGLESVALE 1XV": "/assets/Eaglesvale.png",
+  "RYDINGS 1XV": "/assets/Rydings.png",
+  "HERITAGE 1XV": "/assets/Heritage.png",
+  "CHURCHILL 2XV": "/assets/Churchill.png",
+  "LOMAGUNDI 2XV": "/assets/Lomagundi.png",
+  "FALCON 2XV": "/assets/Falcon.png",
+  "ST ALBANS 2XV": "/assets/StAlbans.png",
+  "PETERHOUSE 2XV": "/assets/Peterhouse.png",
+  "ST GEORGE'S 2XV": "/assets/StGeorges.png",
+  "ST JOHN'S 2XV": "/assets/StJohns.png",
+  "PRINCE EDWARD'S 2XV": "/assets/PrinceEdward.png",
+  "LOMAGUNDI 1XV": "/assets/Lomagundi.png",
+  "ST ALBANS 1XV": "/assets/StAlbans.png",
+  "ST GEORGE'S 1XV": "/assets/StGeorges.png",
+  "ST ANDREW'S 1XV": "/assets/StAndrews.png",
+  "CBC 2XV": "/assets/CBC.png",
+  "PRINCE EDWARD 1XV": "/assets/PrinceEdward.png",
+  "CBC 1XV": "/assets/CBC.png",
+  "FALCON 1XV": "/assets/Falcon.png",
+  "CHURCHILL 1XV": "/assets/Churchill.png",
+  "ST JOHN'S 1XV": "/assets/StJohns.png",
+  "ZAM STEELERS": "/assets/ZamSteelers.png",
+  "SHARKS U20": "/assets/Sharks.png",
+  "PETERHOUSE 1XV": "/assets/Peterhouse.png",
+  "MILTON 2XV": "/assets/Milton.png",
+  "WISE OWL 2XV": "/assets/WiseOwl.png",
+  "PRINCE EDWARD 2XV": "/assets/PrinceEdward.png",
+};
 
 // Animation variants for staggered animations
 const containerVariants = {
@@ -118,12 +158,16 @@ const itemVariants = {
 // Add function to check if a fixture is highlighted
 const isHighlightedFixture = (date: string, time: string, teamA: string, teamB: string) => {
   const highlightedGames = [
+    { date: "April 28th", time: "13:00", teamA: "MILTON 1XV", teamB: "WISE OWL 1XV" },
+    { date: "April 28th", time: "15:40", teamA: "RYDINGS 1XV", teamB: "HERITAGE 1XV" },
+    { date: "April 29th", time: "14:20", teamA: "LOMAGUNDI 1XV", teamB: "ST ALBANS 1XV" },
     { date: "April 29th", time: "15:40", teamA: "ST GEORGE'S 1XV", teamB: "ST ANDREW'S 1XV" },
-    { date: "May 1st", time: "9:20", teamA: "ST GEORGE'S 1XV", teamB: "PRINCE EDWARD 1XV" },
+    { date: "April 30th", time: "13:00", teamA: "GOLDRIDGE 1XV", teamB: "HILLCREST 1XV" },
+    { date: "April 30th", time: "15:40", teamA: "WATERSHED 1XV", teamB: "GATEWAY 1XV" },
     { date: "May 1st", time: "13:20", teamA: "PETERHOUSE 1XV", teamB: "ST ANDREW'S 1XV" },
-    { date: "May 1st", time: "14:40", teamA: "ST JOHN'S 1XV", teamB: "ST ALBANS 1XV" },
-    { date: "May 1st", time: "16:00", teamA: "ZIM STEELERS", teamB: "SHARKS U20" },
-    { date: "May 3rd", time: "13:00", teamA: "LOMAGUNDI 1XV", teamB: "ST GEORGE'S 1XV" },
+    { date: "May 1st", time: "16:00", teamA: "ZAM STEELERS", teamB: "SHARKS U20" },
+    { date: "May 3rd", time: "10:20", teamA: "CBC 1XV", teamB: "PETERHOUSE 1XV" },
+    { date: "May 3rd", time: "11:40", teamA: "PRINCE EDWARD 1XV", teamB: "CHURCHILL 1XV" },
     { date: "May 3rd", time: "14:20", teamA: "FALCON 1XV", teamB: "ST ALBANS 1XV" },
     { date: "May 3rd", time: "15:40", teamA: "ST JOHN'S 1XV", teamB: "ST ANDREW'S 1XV" }
   ];
@@ -141,11 +185,10 @@ const Fixtures: React.FC = () => {
 
   return (
     <div className="relative text-scrummy-navyBlue">
-      {/* Scrollable content wrapper */}
       <div className="relative z-20">
-        {/* Logo overlay behind both header and fixtures */}
+        {/* Logo background overlay */}
         <div
-          className="absolute inset-x-0 top-[-120px] h-[1000px] pointer-events-none opacity-[0.75]"
+          className="absolute inset-x-0 top-[180px] h-[500px] pointer-events-none"
           style={{
             backgroundImage: "url('/assets/logo.png')",
             backgroundSize: "contain",
@@ -157,12 +200,9 @@ const Fixtures: React.FC = () => {
         {/* HEADER */}
         <header className="relative py-24 px-4 md:px-8">
           <div className="max-w-6xl mx-auto relative z-10">
-            <div className="flex items-center mb-8">
-              <Link to="/" className="text-scrummy-navyBlue hover:text-scrummy-goldYellow transition-colors flex items-center gap-1">
-                <ChevronLeft size={20} />
-                <span>Back to Home</span>
-              </Link>
-            </div>
+            <Link to="/" className="text-scrummy-navyBlue hover:text-scrummy-goldYellow flex items-center gap-1">
+              <ChevronLeft size={20} /> <span>Back to Home</span>
+            </Link>
             <motion.h1
               className="mt-8 text-5xl md:text-7xl font-bold text-center mb-24 font-orbitron relative z-10"
               initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.6 }}
@@ -173,7 +213,7 @@ const Fixtures: React.FC = () => {
           </div>
         </header>
 
-        {/* MAIN content for fixtures; added positive top margin to space below header */}
+        {/* MAIN content */}
         <main className="relative z-10 px-4 md:px-8 mt-16">
           <div className="max-w-6xl mx-auto space-y-12">
             {fixturesData.map((day, idx) => (
@@ -191,30 +231,33 @@ const Fixtures: React.FC = () => {
                   {day.fixtures.map((f, i) => {
                     const isHighlighted = isHighlightedFixture(day.date, f.time, f.teamA, f.teamB);
                     return (
-                      <motion.div
-                        key={i}
-                        variants={itemVariants}
-                        whileHover={{ 
-                          y: isHighlighted ? -8 : -5, 
-                          transition: { duration: 0.2 }
-                        }}
-                      >
-                        <Card className={`h-full border-scrummy-lightblue bg-white/60 transition-all duration-300 hover:bg-white/90 relative
-                          ${isHighlighted ? 'border-2 border-scrummy-goldYellow shadow-[0_0_15px_rgba(255,199,0,0.3)] hover:shadow-[0_0_20px_rgba(255,199,0,0.4)]' : ''}`}>
+                      <motion.div key={i} variants={itemVariants} whileHover={{ y: isHighlighted ? -8 : -5, transition: { duration: 0.2 } }}>
+                        <Card className={`h-full bg-white/60 transition-all duration-300 hover:bg-white/90 relative ${
+                          isHighlighted
+                            ? 'border-2 border-scrummy-goldYellow shadow-[0_0_15px_rgba(255,199,0,0.3)] hover:shadow-[0_0_20px_rgba(255,199,0,0.4)]'
+                            : 'border-scrummy-lightblue'
+                        }`}>
                           {isHighlighted && (
-                            <img
-                              src="/assets/logo.png"
-                              alt="SCRUMMY"
-                              className="absolute top-2 right-2 w-8 h-8 object-contain opacity-80"
-                            />
+                            <img src="/assets/logo.png" alt="SCRUMMY" className="absolute top-2 right-2 w-8 h-8 opacity-80" />
                           )}
                           <CardContent className="p-4 flex flex-col">
                             <div className={`text-lg font-bold ${isHighlighted ? 'text-scrummy-navyBlue bg-scrummy-goldYellow' : 'text-scrummy-goldYellow bg-scrummy-navyBlue'} inline-flex rounded px-3 py-1 self-start mb-3`}>
                               {f.time}
                             </div>
                             <div className="space-y-2 text-center flex-grow flex flex-col justify-center">
+                              {/* Team A logo + name */}
+                              {teamLogoMap[f.teamA] && (
+                                <img src={teamLogoMap[f.teamA]} alt={`${f.teamA} logo`} className="w-14 h-14 mx-auto mb-1 object-contain" />
+                              )}
                               <p className={`font-medium text-scrummy-navyBlue ${isHighlighted ? 'font-bold' : ''}`}>{f.teamA}</p>
+
+                              {/* Separator */}
                               <p className="text-scrummy-navyBlue/60 font-semibold">vs</p>
+
+                              {/* Team B logo + name */}
+                              {teamLogoMap[f.teamB] && (
+                                <img src={teamLogoMap[f.teamB]} alt={`${f.teamB} logo`} className="w-14 h-14 mx-auto mb-1 object-contain" />
+                              )}
                               <p className={`font-medium text-scrummy-navyBlue ${isHighlighted ? 'font-bold' : ''}`}>{f.teamB}</p>
                             </div>
                           </CardContent>
